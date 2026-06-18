@@ -36,6 +36,7 @@ const QuestionsMds = getDirMds('questions')
 const VueMds = getDirMds('framework/vue')
 const ReactMds = getDirMds('framework/react')
 const NestJsMds = getDirMds('framework/nestjs')
+const AIMds = getDirMds('ai');
 
 export default defineUserConfig({
     head: [
@@ -75,6 +76,10 @@ export default defineUserConfig({
             {
                 text: '算法',
                 link: AlgorithmMds[0],
+            },
+            {
+              text: "AI",
+              link: AIMds[0],
             },
             {
                 text: 'LeetCode',
@@ -117,13 +122,14 @@ export default defineUserConfig({
         ],
         sidebar: { // 配置侧边栏部分
             "/algorithm/": AlgorithmMds,
+            "/ai/": AIMds,
             '/LeetCode/': LeetCodeMds,
             '/engineering/': EngineeringMds,
             '/coding/': CodingMds,
             '/questions/': QuestionsMds,
             '/framework/vue/': VueMds,
             '/framework/react/': ReactMds,
-            '/framework/nestjs': NestJsMds
+            '/framework/nestjs': NestJsMds,
         },
     }),
     plugins: [
