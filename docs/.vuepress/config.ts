@@ -86,10 +86,12 @@ export default defineUserConfig({
                 text: '算法',
                 link: AlgorithmMds[0],
             },
-            {
-              text: "AI",
-              link: AIMds[0],
-            },
+            ...(AIMds.length > 0
+              ? [{
+                  text: "AI",
+                  link: AIMds[0],
+                }]
+              : []),
             {
                 text: 'LeetCode',
                 link: LeetCodeMds[0],
@@ -131,7 +133,7 @@ export default defineUserConfig({
         ],
         sidebar: { // 配置侧边栏部分
             "/algorithm/": AlgorithmMds,
-            "/ai/": AIMds,
+            ...(AIMds.length > 0 ? { "/ai/": AIMds } : {}),
             '/LeetCode/': LeetCodeMds,
             '/engineering/': EngineeringMds,
             '/coding/': CodingMds,
