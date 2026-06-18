@@ -1,4 +1,4 @@
-import { defaultTheme, defineUserConfig } from 'vuepress'
+import { defaultTheme, defineUserConfig, viteBundler } from 'vuepress'
 import { mdEnhancePlugin } from "vuepress-plugin-md-enhance"
 import { searchPlugin } from '@vuepress/plugin-search'
 import { copyCodePlugin } from 'vuepress-plugin-copy-code2'
@@ -39,6 +39,15 @@ const NestJsMds = getDirMds('framework/nestjs')
 const AIMds = getDirMds('ai');
 
 export default defineUserConfig({
+    bundler: viteBundler({
+        viteOptions: {
+            resolve: {
+                alias: {
+                    'cytoscape/dist/cytoscape.umd.js': 'cytoscape',
+                },
+            },
+        },
+    }),
     head: [
         ['link', { rel: 'icon', href: '/studyLib/assets/icon.jpeg' }],
     ],
