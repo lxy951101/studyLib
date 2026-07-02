@@ -1,4 +1,4 @@
-# [Superpowers](https://github.com/obra/Superpowers)
+# [Superpowers](https://github.com/obra/Superpowers)学习笔记
 
 [[toc]]
 
