@@ -1,0 +1,3 @@
+# CLAUDE
+
+请参考AGENTS.md
