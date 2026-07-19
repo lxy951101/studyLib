@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-bebf0950","path":"/ai/06calude-code-hooks.html","title":"Calude Code Hooks","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"SessionStart Hook","slug":"sessionstart-hook","link":"#sessionstart-hook","children":[]}],"git":{"updatedTime":1782998541000},"filePathRelative":"ai/06calude-code-hooks.md"}');export{e as data};

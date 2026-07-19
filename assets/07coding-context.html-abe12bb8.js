@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-6ccc2410","path":"/ai/07coding-context.html","title":"Coding Context","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"Harness 固定文件（随代码仓库维护）","slug":"harness-固定文件-随代码仓库维护","link":"#harness-固定文件-随代码仓库维护","children":[]}],"git":{"updatedTime":1782998541000},"filePathRelative":"ai/07coding-context.md"}');export{e as data};
