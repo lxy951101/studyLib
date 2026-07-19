@@ -432,4 +432,10 @@ function asyncToGenerator(generatorFunc) {
 }
 ```
 
-## 优先级队列
+## isUrl
+
+```js
+const _isUrl = url => {
+    return /^((http|https):\/\/)?(([A-Za-z0-9]+-[A-Za-z0-9]+|[A-Za-z0-9]+)\.)+([A-Za-z]+)(:\d+)?(\/.*)?(\?.*)?(#.*)?$/.test(url)
+}
+```

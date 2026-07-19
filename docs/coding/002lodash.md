@@ -38,6 +38,8 @@ function debounce(fn, time) {
 
 ## cloneDeep
 
+structuredClone
+
 ```js
 function isObject(target) {
     return typeof target === 'object' && target != null
@@ -123,6 +125,58 @@ function cloneDeep(target, map = new WeakMap()) {
         }
     }
     map.set(target, cloneTarget)
+    return cloneTarget
+}
+```
+
+推荐好记一点
+
+```js
+ const cloneDeep = (target, map = new Map()) => {
+    if (target === null || typeof target !== 'object') return target
+    if (map.has(target)) return map.get(target)
+
+    const Ctor = target.constructor
+    const type = Ctor.name
+    // Date/RegExp 简单值类型，直接复制
+    if (/^(RegExp|Date)$/i.test(type)) {
+        const clone = new Ctor(target)
+        map.set(target, clone)
+        return clone
+    }
+    // Function 浅复制
+    if (/^Function$/i.test(type)) {
+        const clone = new Ctor(target)
+        map.set(target, clone)
+        return clone
+    }
+    // Map 手动遍历递归深拷贝
+    if (type === 'Map') {
+        const clone = new Map()
+        map.set(target, clone)
+        target.forEach((v, k) => {
+            clone.set(cloneDeep(k, map), cloneDeep(v, map))
+        })
+        return clone
+    }
+    // Set 手动遍历递归深拷贝
+    if (type === 'Set') {
+        const clone = new Set()
+        map.set(target, clone)
+        target.forEach(v => {
+            clone.add(cloneDeep(v, map))
+        })
+        return clone
+    }
+
+    // 普通对象数组
+    const cloneTarget = Array.isArray(target) ? [] : {}
+    map.set(target, cloneTarget)
+    for (const prop in target) {
+        if (target.hasOwnProperty(prop)) {
+            cloneTarget[prop] = cloneDeep(target[prop], map)
+        }
+    }
     return cloneTarget
 }
 ```
@@ -507,24 +561,24 @@ function kebabCase(str) {
 
 ```js
 function difference(...list) {
-    const map = new Map()
-    list.forEach((_list) => {
-        _list.forEach((item) => {
-            if (!map.has(item)) {
-                map.set(item, 1)
-            } else [
-                map.set(item, map.get(item) + 1)
-            ]
-        })
+  const map = new Map();
+  list.forEach((_list) => {
+    _list.forEach((item) => {
+      if (!map.has(item)) {
+        map.set(item, 1);
+      } else {
+        map.set(item, map.get(item) + 1);
+      }
     })
-    const result = []
-    for (const [value, key] of map.entries()) {
-        if (value === 1) {
-            result.push(key)
-        }
+  })
+  const result = [];
+  for (const [value, key] of map.entries()) {
+    if (value !== list.length) {
+      result.push(key);
     }
-    map.clear()
-    return result
+  }
+  map.clear();
+  return result;
 }
 ```
 

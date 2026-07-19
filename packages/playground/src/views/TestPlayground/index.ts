@@ -1,3 +1,3 @@
-import TestPlayground from './TestPlayground.vue'
+import TestPlayground from './TestPlayground.vue';
 
-export default TestPlayground
+export default TestPlayground;

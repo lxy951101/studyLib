@@ -13,5 +13,26 @@
     <script type="module" src="src/main.ts"></script>
     <!--vite end-->
 </body>
-
+<script>
+function difference(...list) {
+  const map = new Map();
+  list.forEach((_list) => {
+    _list.forEach((item) => {
+      if (!map.has(item)) {
+        map.set(item, 1);
+      } else {
+        map.set(item, map.get(item) + 1);
+      }
+    })
+  })
+  const result = [];
+  for (const [value, key] of map.entries()) {
+    if (value !== list.length) {
+      result.push(key);
+    }
+  }
+  map.clear();
+  return result;
+}
+</script>
 </html>
